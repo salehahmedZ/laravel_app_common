@@ -1,0 +1,80 @@
+{
+    "name": "saleh/laravel-app-common",
+    "description": "This is my package laravel-app-common",
+    "keywords": [
+        "salehahmedZ",
+        "laravel",
+        "laravel-app-common"
+    ],
+    "homepage": "https://github.com/salehahmedz/laravel-app-common",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Saleh Alzahrani",
+            "email": "saleh_ahmed@outlook.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-exif": "*",
+        "ext-gd": "*",
+        "ext-pdo": "*",
+        "illuminate/contracts": "^9.0",
+        "kornrunner/blurhash": "^1.2",
+        "ksubileau/color-thief-php": "^2.0",
+        "laravel/sanctum": "^3.0",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "torann/geoip": "^3.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "pestphp/pest-plugin-parallel": "^1.2",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Saleh\\LaravelAppCommon\\": "src",
+            "Saleh\\LaravelAppCommon\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Saleh\\LaravelAppCommon\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Saleh\\LaravelAppCommon\\LaravelAppCommonServiceProvider"
+            ],
+            "aliases": {
+                "LaravelAppCommon": "Saleh\\LaravelAppCommon\\Facades\\LaravelAppCommon"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

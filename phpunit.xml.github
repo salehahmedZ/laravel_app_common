@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    bootstrap="vendor/autoload.php"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    executionOrder="random"
+    failOnWarning="true"
+    failOnRisky="true"
+    failOnEmptyTestSuite="true"
+    beStrictAboutOutputDuringTests="true"
+    verbose="true"
+>
+    <testsuites>
+        <testsuite name="Saleh Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+<!--    <coverage>-->
+<!--        <include>-->
+<!--            <directory suffix=".php">./src</directory>-->
+<!--        </include>-->
+<!--        <report>-->
+<!--            <html outputDirectory="build/coverage"/>-->
+<!--            <text outputFile="build/coverage.txt"/>-->
+<!--            <clover outputFile="build/logs/clover.xml"/>-->
+<!--        </report>-->
+<!--    </coverage>-->
+
+    <logging>
+        <junit outputFile="build/report.junit.xml"/>
+    </logging>
+    <php>
+        <env name="PHPUNIT_PRETTY_PRINT_PROGRESS" value="true" />
+        <env name="APP_KEY" value="base64:2fl+Ktvkfl+Fuz4Qp/A75G2RTiWVA/ZoKZvp6fiiM10="/>
+        <env name="FCM_SERVER_KEY" value="12345"/>
+
+        <env name="XDEBUG_MODE" value="coverage"/>
+        <ini name="xdebug.mode" value="coverage"/>
+
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+
+        <server name="SCOUT_DRIVER" value="null"/>
+
+        <server name="DB_CONNECTION" value="mysql"/>
+        <server name="DB_DATABASE" value="test_database"/>
+        <server name="DB_PASSWORD" value="rootpass"/>
+        <server name="DB_USERNAME" value="admin"/>
+
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+
+<!--        <server name="MEILISEARCH_HOST" value="http://138.68.140.209"/>-->
+<!--        <server name="MEILISEARCH_KEY" value="Mjg4ODg2NDc1OWNjNTgyNGFlNzRjOTRi"/>-->
+
+    </php>
+</phpunit>
