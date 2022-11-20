@@ -47,7 +47,7 @@ class Device extends Model
         $device = Device::create($deviceData);
 
         //send admin notification only if this is a new device and has no user
-        if (! $exist && $device->user_id == null) {
+        if (! $exist ) { //&& $device->user_id == null
             event(new DeviceWasCreated($device));
         }
 
