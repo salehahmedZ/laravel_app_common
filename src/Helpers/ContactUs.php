@@ -2,8 +2,8 @@
 
 namespace Saleh\LaravelAppCommon\Helpers;
 
-use JetBrains\PhpStorm\ArrayShape;
 use Illuminate\Support\Facades\Cache;
+use JetBrains\PhpStorm\ArrayShape;
 
 class ContactUs
 {

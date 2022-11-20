@@ -13,5 +13,4 @@ class DatabaseSeeder extends Seeder
     {
         Device::factory()->count(10)->create();
     }
-
 }
