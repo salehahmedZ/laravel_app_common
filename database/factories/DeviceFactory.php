@@ -4,8 +4,8 @@ namespace Saleh\LaravelAppCommon\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Auth\User;
-use Saleh\LaravelAppCommon\Models\Device;
 use Saleh\LaravelAppCommon\Helpers\AppleDevices;
+use Saleh\LaravelAppCommon\Models\Device;
 
 class DeviceFactory extends Factory
 {

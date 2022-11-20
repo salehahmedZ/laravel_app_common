@@ -10,6 +10,7 @@ use Saleh\LaravelAppCommon\Models\Device;
 class RequestData
 {
     public static float $defaultLat = 23.8859;
+
     public static float $defaultLng = 45.0792;
 
     //device & user data
