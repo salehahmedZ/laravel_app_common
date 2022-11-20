@@ -13,7 +13,6 @@ class DeviceFactory extends Factory
 
     public function definition(): array
     {
-
         /** @var User $userModel */
         $userModel = config('app-common.userModel');
 
