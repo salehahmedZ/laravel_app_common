@@ -13,6 +13,10 @@ class DeviceFactory extends Factory
 
     public function definition(): array
     {
+
+        /** @var User $userModel */
+        $userModel = config('app-common.userModel');
+
         return [
             'deviceModel' => $this->faker->randomElement(array_keys(AppleDevices::$appleDevices)),
             'deviceOS' => $this->faker->randomElement([
@@ -22,7 +26,7 @@ class DeviceFactory extends Factory
             'deviceID' => $this->faker->uuid(),
             'notificationToken' => $this->faker->uuid(),
             'deviceOSVersion' => $this->faker->randomDigit(),
-            'user_id' => User::factory(),
+            'user_id' => $userModel::factory(),
         ];
     }
 }
