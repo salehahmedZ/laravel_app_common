@@ -16,7 +16,9 @@ class LaravelAppCommonServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-app-common')
-            ->hasConfigFile();
+            ->hasConfigFile()
+            ->hasViews()
+            ->hasMigrations(['create_devices_table']);
     }
 
     public function bootingPackage()
@@ -34,7 +36,7 @@ class LaravelAppCommonServiceProvider extends PackageServiceProvider
     {
         $this->registerRateLimits();
 
-//        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'LaravelAppCommon');
 

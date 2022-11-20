@@ -1,6 +1,7 @@
 <?php
 
-// config for LaravelAppCommon/LaravelAppCommon
-return [
+// config for saleh/LaravelAppCommon
 
+return [
+    'userModel' => 'App\Models\User',
 ];
