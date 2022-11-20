@@ -22,7 +22,7 @@ class DeviceFactory extends Factory
             'deviceID' => $this->faker->uuid(),
             'notificationToken' => $this->faker->uuid(),
             'deviceOSVersion' => $this->faker->randomDigit(),
-            'user_id' => LaravelAppCommon::user()->factory(),
+            'user_id' => LaravelAppCommon::user()::factory(),
         ];
     }
 }
