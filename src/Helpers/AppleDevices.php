@@ -202,6 +202,12 @@ final class AppleDevices
         'iPhone14,3' => 'iPhone 13 Pro Max',
         'iPhone14,4' => 'iPhone 13 Mini',
         'iPhone14,5' => 'iPhone 13',
+
+        "iPhone14,7" =>"iPhone 14",
+        "iPhone14,8" =>"iPhone 14 Plus",
+        "iPhone15,2" =>"iPhone 14 Pro",
+        "iPhone15,3" =>"iPhone 14 Pro Max",
+
         //
         'iPod1,1' => 'iPod touch (1st generation)',
         'iPod2,1' => 'iPod touch (2nd generation)',
