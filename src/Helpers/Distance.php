@@ -35,5 +35,3 @@ class Distance
         return $angle * 6371000;
     }
 }
-
-
