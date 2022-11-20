@@ -11,7 +11,7 @@ return new class() extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(LaravelAppCommon::user()::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(LaravelAppCommon::user())->nullable()->constrained()->cascadeOnDelete();
 
             $table->string('notificationToken')->nullable()->unique();
             $table->string('deviceID')->nullable()->unique();
