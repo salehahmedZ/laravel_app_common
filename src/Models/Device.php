@@ -61,6 +61,6 @@ class Device extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(LaravelAppCommon::user()::class);
+        return $this->belongsTo(LaravelAppCommon::user());
     }
 }
