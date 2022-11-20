@@ -2,8 +2,7 @@
 
 namespace Saleh\LaravelAppCommon\Helpers;
 
-use Illuminate\Foundation\Auth\User;
-//use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Saleh\LaravelAppCommon\Models\Device;
 
@@ -219,7 +218,7 @@ class RequestData
         $this->keyword = $request->keyword;
     }
 
-    public function user(): ?User
+    public function user(): ?Model
     {
         $user = $this->request->user('sanctum');
 

@@ -5,9 +5,9 @@ namespace Saleh\LaravelAppCommon\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Foundation\Auth\User;
 use Saleh\LaravelAppCommon\Database\Factories\DeviceFactory;
 use Saleh\LaravelAppCommon\Events\DeviceWasCreated;
+use Saleh\LaravelAppCommon\LaravelAppCommon;
 
 class Device extends Model
 {
@@ -61,6 +61,6 @@ class Device extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(LaravelAppCommon::user()::class);
     }
 }
