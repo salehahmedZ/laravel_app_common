@@ -40,7 +40,7 @@ class LaravelAppCommonServiceProvider extends PackageServiceProvider
 
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'LaravelAppCommon');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'LaravelAppCommon');
+        //$this->loadViewsFrom(__DIR__.'/../resources/views', 'LaravelAppCommon');
 
 //        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
     }
@@ -48,7 +48,7 @@ class LaravelAppCommonServiceProvider extends PackageServiceProvider
     private function getApiLimit(Request $request, int $attempts): Limit
     {
         return Limit::perMinute($attempts)->by($request->user('sanctum')?->id ?? $request->ip())->response(fn () => response()->json([
-            'msg' => trans('LaravelAppCommon::api.too many attempts'),
+            'msg' => trans('LaravelAppCommon::api.Too many attempts'),
             'success' => false,
         ]));
     }
