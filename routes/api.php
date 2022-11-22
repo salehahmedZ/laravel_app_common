@@ -1,6 +1,5 @@
 <?php
 
-
 use Saleh\LaravelAppCommon\Http\Controllers\AppMsgGet;
 use Saleh\LaravelAppCommon\Http\Middleware\Localization;
 use Saleh\LaravelAppCommon\Http\Middleware\SilentMode;
