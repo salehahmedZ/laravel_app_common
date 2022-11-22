@@ -10,6 +10,11 @@ class AppMsgGet extends Controller
 {
     public function __invoke(Request $request): JsonResponse
     {
-        return response()->json((new AppMsg())->get());
+        return response()->json([
+            'msg' => '',
+            'success' => true,
+            'appMsg' => (new AppMsg())->get(),
+        ]
+        );
     }
 }
