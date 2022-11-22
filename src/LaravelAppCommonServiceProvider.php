@@ -42,7 +42,7 @@ class LaravelAppCommonServiceProvider extends PackageServiceProvider
 
         //$this->loadViewsFrom(__DIR__.'/../resources/views', 'LaravelAppCommon');
 
-//        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
     }
 
     private function getApiLimit(Request $request, int $attempts): Limit
