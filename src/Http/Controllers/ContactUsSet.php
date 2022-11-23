@@ -10,7 +10,7 @@ class ContactUsSet extends Controller
 {
     public function __invoke(Request $request): JsonResponse
     {
-        $newData = $request->appMsg;
+        $newData = $request->contactUs;
 
         $data = [
             'msg' => 'Done',

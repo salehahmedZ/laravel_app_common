@@ -10,7 +10,7 @@ class AppVersionSet extends Controller
 {
     public function __invoke(Request $request): JsonResponse
     {
-        $newData = $request->appMsg;
+        $newData = $request->appVersion;
 
         $data = [
             'msg' => 'Done',
