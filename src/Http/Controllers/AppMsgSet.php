@@ -1,6 +1,6 @@
 <?php
 
-namespace Saleh\LaravelAppCommon\Http\Controllers\Admin\AppMsg;
+namespace Saleh\LaravelAppCommon\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

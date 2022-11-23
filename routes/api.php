@@ -15,11 +15,11 @@ Route::prefix('api')->middleware([
     Localization::class,
     'throttle:api50',
 ])->group(function () {
-    Route::post('appMsg/get', AppMsgGet::class)->middleware('throttle:api50');
-    Route::post('appVersion/get', AppVersionGet::class)->middleware('throttle:api50');
-    Route::post('contactUs/get', ContactUsGet::class)->middleware('throttle:api50');
+    Route::post('appMsg/get', AppMsgGet::class);
+    Route::post('appVersion/get', AppVersionGet::class);
+    Route::post('contactUs/get', ContactUsGet::class);
     //
-    Route::post('appMsg/set', AppMsgSet::class)->middleware('throttle:api50', MustBeAnAdmin::class);
-    Route::post('appVersion/set', AppVersionSet::class)->middleware('throttle:api50', MustBeAnAdmin::class);
-    Route::post('contactUs/set', ContactUsSet::class)->middleware('throttle:api50', MustBeAnAdmin::class);
+    Route::post('appMsg/set', AppMsgSet::class)->middleware(MustBeAnAdmin::class);
+    Route::post('appVersion/set', AppVersionSet::class)->middleware(MustBeAnAdmin::class);
+    Route::post('contactUs/set', ContactUsSet::class)->middleware(MustBeAnAdmin::class);
 });
