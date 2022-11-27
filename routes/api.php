@@ -6,15 +6,19 @@ use Saleh\LaravelAppCommon\Http\Controllers\AppVersionGet;
 use Saleh\LaravelAppCommon\Http\Controllers\AppVersionSet;
 use Saleh\LaravelAppCommon\Http\Controllers\ContactUsGet;
 use Saleh\LaravelAppCommon\Http\Controllers\ContactUsSet;
+use Saleh\LaravelAppCommon\Http\Controllers\GetAll;
 use Saleh\LaravelAppCommon\Http\Middleware\Localization;
 use Saleh\LaravelAppCommon\Http\Middleware\MustBeAnAdmin;
 use Saleh\LaravelAppCommon\Http\Middleware\SilentMode;
 
-Route::prefix('api')->middleware([
+Route::prefix('api/common')->middleware([
     SilentMode::class,
     Localization::class,
     'throttle:api50',
 ])->group(function () {
+    //
+    Route::post('getAll', GetAll::class);
+    //
     Route::post('appMsg/get', AppMsgGet::class);
     Route::post('appVersion/get', AppVersionGet::class);
     Route::post('contactUs/get', ContactUsGet::class);
