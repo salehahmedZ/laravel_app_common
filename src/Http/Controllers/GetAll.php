@@ -13,13 +13,13 @@ class GetAll extends Controller
     public function __invoke(Request $request): JsonResponse
     {
         return response()->json([
-                'msg' => '',
-                'success' => true,
-                //
-                'appMsg' => (new AppMsg())->get(),
-                'appVersion' => (new AppVersion())->get(),
-                'contactUs' => (new ContactUs())->get(),
-            ]
+            'msg' => '',
+            'success' => true,
+            //
+            'appMsg' => (new AppMsg())->get(),
+            'appVersion' => (new AppVersion())->get(),
+            'contactUs' => (new ContactUs())->get(),
+        ]
         );
     }
 }
