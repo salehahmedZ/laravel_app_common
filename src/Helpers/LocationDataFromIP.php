@@ -10,7 +10,7 @@ class LocationDataFromIP
 {
     private GeoIP|Location $geoip;
 
-    public function __construct(private ?string $ip = null)
+    public function __construct(private readonly ?string $ip = null)
     {
         Config::set('geoip.cache_tags', false);
         $this->geoip = geoip($this->ip ?? $this->getIp());
