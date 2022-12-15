@@ -3,7 +3,7 @@
 namespace Saleh\LaravelAppCommon\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Saleh\LaravelAppCommon\Helpers\AppleDevices;
+use Saleh\LaravelAppCommon\Helpers\Devices;
 use Saleh\LaravelAppCommon\LaravelAppCommon;
 use Saleh\LaravelAppCommon\Models\Device;
 
@@ -14,7 +14,7 @@ class DeviceFactory extends Factory
     public function definition(): array
     {
         return [
-            'deviceModel' => $this->faker->randomElement(array_keys(AppleDevices::$appleDevices)),
+            'deviceModel' => $this->faker->randomElement(array_keys(Devices::$appleDevices)),
             'deviceOS' => $this->faker->randomElement([
                 'ios',
                 'android',

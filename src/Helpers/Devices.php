@@ -2,7 +2,7 @@
 
 namespace Saleh\LaravelAppCommon\Helpers;
 
-final class AppleDevices
+final class Devices
 {
     public static array $appleDevices = [
         'AppleTV1,1' => 'Apple TV (1st generation)',
