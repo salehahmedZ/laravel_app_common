@@ -9,6 +9,12 @@ use Saleh\LaravelAppCommon\Database\Factories\DeviceFactory;
 use Saleh\LaravelAppCommon\Events\DeviceWasCreated;
 use Saleh\LaravelAppCommon\LaravelAppCommon;
 
+//generate properties
+
+/**
+ * @property ?string $deviceID
+ * @property ?string $notificationToken
+ */
 class Device extends Model
 {
     use HasFactory;
@@ -28,7 +34,7 @@ class Device extends Model
                 $devices->where('deviceID', $deviceID)->orWhere('notificationToken', $notificationToken);
             } elseif (! empty($deviceID)) {
                 $devices->where('deviceID', $deviceID);
-            } elseif (! empty($notificationToken)) {
+            } else {
                 $devices->where('notificationToken', $notificationToken);
             }
         }

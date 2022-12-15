@@ -3,7 +3,6 @@
 namespace Saleh\LaravelAppCommon\Helpers;
 
 use Illuminate\Support\Facades\Cache;
-use JetBrains\PhpStorm\ArrayShape;
 
 class AppVersion
 {
@@ -14,11 +13,6 @@ class AppVersion
         return Cache::forever($this->key, $data);
     }
 
-    #[ArrayShape([
-        'ios' => 'int',
-        'android' => 'int',
-        'forceUpdate' => 'bool',
-    ])]
     public function get(): array
     {
         $data = Cache::get($this->key, []);

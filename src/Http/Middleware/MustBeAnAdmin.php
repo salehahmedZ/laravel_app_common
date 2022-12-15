@@ -11,6 +11,7 @@ class MustBeAnAdmin
     {
         $user = auth('sanctum')->user();
 
+        /** @phpstan-ignore-next-line */
         if (is_null($user) || $user->isAdmin === false) {
             return response()->json([
                 'msg' => trans('LaravelAppCommon::api.You are not an admin'),

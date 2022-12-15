@@ -42,9 +42,9 @@ class RequestData
 
     //
 
-    public ?string $lat;
+    public string|float|null $lat;
 
-    public ?string $lng;
+    public string|float|null $lng;
 
     //
     public ?string $countryCode;
@@ -85,7 +85,7 @@ class RequestData
     private function getData(Request $request): void
     {
         //set Impersonation to prevent admin device from being added to users devices and prevent other things
-        $this->isImpersonation = $request->header('X-Impersonation', false) === true;
+        $this->isImpersonation = $request->header('X-Impersonation', false) == true;
 
         //device
         $this->deviceID = $request->deviceID;

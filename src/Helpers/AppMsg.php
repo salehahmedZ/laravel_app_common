@@ -3,7 +3,6 @@
 namespace Saleh\LaravelAppCommon\Helpers;
 
 use Illuminate\Support\Facades\Cache;
-use JetBrains\PhpStorm\ArrayShape;
 
 class AppMsg
 {
@@ -26,14 +25,6 @@ class AppMsg
         return Cache::forever($this->key, $data);
     }
 
-    #[ArrayShape([
-        'text' => 'array',
-        'type' => 'string',
-        'os' => 'string',
-        'forBuild' => 'int',
-        'forBuildOperator' => 'string',
-        'countryCode' => 'string',
-    ])]
     public function get(): array
     {
         $data = Cache::get($this->key, $this->default);

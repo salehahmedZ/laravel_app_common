@@ -3,7 +3,6 @@
 namespace Saleh\LaravelAppCommon\Helpers;
 
 use Illuminate\Support\Facades\Cache;
-use JetBrains\PhpStorm\ArrayShape;
 
 class ContactUs
 {
@@ -14,13 +13,6 @@ class ContactUs
         return Cache::forever($this->key, $data);
     }
 
-    #[ArrayShape([
-        'whatsapp' => 'string',
-        'twitter' => 'string',
-        'snapchat' => 'string',
-        'email' => 'string',
-        'instagram' => 'string',
-    ])]
     public function get(): array
     {
         $data = Cache::get($this->key, []);
