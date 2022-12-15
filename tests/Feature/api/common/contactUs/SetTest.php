@@ -20,3 +20,19 @@ test('set contactUs route', function () use ($url) {
     $res = postJson('api/common/contactUs/get');
     $res->assertJsonPath('contactUs', $data);
 });
+
+
+test('set contactUs route in silent mode', function () use ($url) {
+    actingAsAdmin();
+
+    $data = contactUs;
+    $data['email'] = 'test@test.test';
+    $data['whatsapp'] = '12345';
+
+    $res = postJson($url, ['contactUs' => $data,'silent' => true]);
+    $res->assertJsonPath('msg', '');
+    $res->assertJsonPath('success', true);
+
+    $res = postJson('api/common/contactUs/get');
+    $res->assertJsonPath('contactUs', $data);
+});
