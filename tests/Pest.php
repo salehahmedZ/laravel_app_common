@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Auth\GenericUser;
+//use Illuminate\Auth\GenericUser;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Illuminate\Testing\TestResponse;
 use function Pest\Laravel\withoutExceptionHandling;
@@ -46,7 +47,8 @@ function mustBeAdmin($url): TestResponse
 
 function actingAsAdmin($guard = null)
 {
-    $user = new GenericUser([]);
+    $user = new User([]);
+    $user->id = 1;
     $user->isAdmin = true;
     test()->actingAs($user, $guard ?? 'sanctum');
 

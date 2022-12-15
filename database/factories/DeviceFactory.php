@@ -4,7 +4,6 @@ namespace Saleh\LaravelAppCommon\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Saleh\LaravelAppCommon\Helpers\Devices;
-use Saleh\LaravelAppCommon\LaravelAppCommon;
 use Saleh\LaravelAppCommon\Models\Device;
 
 class DeviceFactory extends Factory
@@ -22,7 +21,6 @@ class DeviceFactory extends Factory
             'deviceID' => $this->faker->uuid(),
             'notificationToken' => $this->faker->uuid(),
             'deviceOSVersion' => $this->faker->randomDigit(),
-            'user_id' => LaravelAppCommon::user()::factory(),
         ];
     }
 }

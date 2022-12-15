@@ -8,10 +8,6 @@ use Saleh\LaravelAppCommon\Models\Device;
 
 class RequestData
 {
-    public static float $defaultLat = 23.8859;
-
-    public static float $defaultLng = 45.0792;
-
     //device & user data
     public ?string $notificationToken;
 
@@ -50,75 +46,8 @@ class RequestData
 
     public ?string $lng;
 
-    //auth
-    public ?string $email;
-
-    public ?string $newEmail;
-
-    public ?string $password;
-
-    public ?string $currentPassword;
-
-    public ?string $code;
-
-    public ?string $name;
-
-    public ?string $bio;
-
-    public ?string $type;
-
-    public ?string $description;
-
-    public ?string $price;
-
-    public ?string $avatar;
-
-    public ?string $image;
-
     //
     public ?string $countryCode;
-
-    //
-    public ?array $cities;
-
-    //
-    public ?string $contactPhone;
-
-    public ?string $contactPhoneCountryCode;
-
-    //
-    public ?bool $public;
-
-    //
-    public ?bool $allowWhatsapp;
-
-    public ?bool $allowCalls;
-    //
-
-    //models ids
-    public ?string $notificationID;
-
-    public ?string $imageID;
-
-    public ?string $tokenID;
-
-    public ?string $userID;
-
-    public ?array $usersIds;
-
-    //synonyms
-    public ?string $synonyms;
-
-    public ?string $word;
-
-    //words
-    public ?string $wordID;
-
-    public ?array $labels;
-
-    public ?string $category;
-
-    public ?string $keyword;
 
     public bool $isImpersonation;
 
@@ -131,8 +60,9 @@ class RequestData
 
     //called one time
 
-    public function getIpData(Request $request): void
+    public function getIpData(?Request $request = null): void
     {
+        $request = $request ?? $this->request;
         $this->userAgent = $request->userAgent();
 
         $locationData = new LocationDataFromIP(); //$this->ip
@@ -155,7 +85,7 @@ class RequestData
     private function getData(Request $request): void
     {
         //set Impersonation to prevent admin device from being added to users devices and prevent other things
-        $this->isImpersonation = $request->header('X-Impersonation', false);
+        $this->isImpersonation = $request->header('X-Impersonation', false) === true;
 
         //device
         $this->deviceID = $request->deviceID;
@@ -169,53 +99,12 @@ class RequestData
         $this->appLang = $request->appLang;
         $this->appThemeMode = $request->appThemeMode;
 
-        //user data
-        $this->email = $request->email;
-        $this->newEmail = $request->newEmail;
-        $this->password = $request->password;
-        $this->currentPassword = $request->currentPassword;
-        $this->code = $request->code;
-        $this->name = $request->name;
-        $this->bio = $request->bio;
-        $this->type = $request->type;
-        $this->avatar = $request->avatar;
         //
         $this->countryCode = $request->countryCode;
-        //
-        $this->allowCalls = $request->allowCalls;
-        $this->allowWhatsapp = $request->allowWhatsapp;
-        //
-        $this->cities = $request->cities;
-        //
-        $this->contactPhone = $request->contactPhone;
-        $this->contactPhoneCountryCode = $request->contactPhoneCountryCode;
-        //
-        $this->public = $request->public;
-        $this->image = $request->image;
-        $this->description = $request->description;
-        $this->price = $request->price;
-
-        //models ids
-        $this->notificationID = $request->notificationID;
-        $this->imageID = $request->imageID;
-        $this->tokenID = $request->tokenID;
-        $this->userID = $request->userID;
-        $this->usersIds = $request->usersIds;
 
         //location
-        $this->lat = $request->lat ?? $this->user()?->lat ?? $this->latIp ?? self::$defaultLat;
-        $this->lng = $request->lng ?? $this->user()?->lng ?? $this->lngIp ?? self::$defaultLng;
-
-        $this->word = $request->word;
-        $this->synonyms = $request->synonyms;
-
-        //words
-        $this->wordID = $request->wordID;
-        $this->labels = $request->labels;
-        $this->category = $request->category;
-
-        //search
-        $this->keyword = $request->keyword;
+        $this->lat = $request->lat ?? $this->latIp;
+        $this->lng = $request->lng ?? $this->lngIp;
     }
 
     public function user(): ?Model
@@ -250,14 +139,17 @@ class RequestData
 
     public function device(): ?Device
     {
+        //dd($this->notificationToken);
         $device = null;
-        if (! empty($this->deviceID)) {
-            $device = Device::where('deviceID', $this->deviceID)->first();
+        if (! empty($this->deviceID) || ! empty($this->notificationToken)) {
+            $device = Device::where('deviceID', $this->deviceID)
+                            ->when(! empty($this->notificationToken), fn ($q) => $q->orWhere('notificationToken', $this->notificationToken))
+                            ->first();
         }
 
-        if (empty($device) && ! empty($this->notificationToken)) {
-            $device = Device::where('notificationToken', $this->notificationToken)->first();
-        }
+        //if (empty($device) && ! empty($this->notificationToken)) {
+        //    $device = Device::where('notificationToken', $this->notificationToken)->first();
+        //}
 
         return $device;
     }

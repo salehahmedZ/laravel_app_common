@@ -1,0 +1,15 @@
+{
+    "user_id": 1,
+    "notificationToken": null,
+    "deviceModel": null,
+    "deviceOS": null,
+    "deviceOSVersion": null,
+    "deviceID": null,
+    "appBuild": null,
+    "appLang": null,
+    "appThemeMode": null,
+    "ip": "193.62.157.66",
+    "countryIp": "United Kingdom",
+    "countryCodeIp": "GB",
+    "cityIp": "London"
+}

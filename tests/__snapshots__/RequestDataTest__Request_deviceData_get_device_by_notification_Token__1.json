@@ -1,0 +1,15 @@
+{
+    "user_id": null,
+    "notificationToken": "notification_token",
+    "deviceModel": "iphone12.1",
+    "deviceOS": "ios",
+    "deviceOSVersion": "deviceOSVersion",
+    "deviceID": null,
+    "appBuild": "123.1",
+    "appLang": "ar",
+    "appThemeMode": "system",
+    "ip": "193.62.157.66",
+    "countryIp": "United Kingdom",
+    "countryCodeIp": "GB",
+    "cityIp": "London"
+}
