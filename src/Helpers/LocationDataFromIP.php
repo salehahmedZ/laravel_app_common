@@ -10,16 +10,20 @@ class LocationDataFromIP
 {
     private GeoIP|Location $geoip;
 
-    public function __construct($ip = null)
+    public function __construct(private ?string $ip = null)
     {
-        $ip = $ip ?? $this->getIp();
-
         Config::set('geoip.cache_tags', false);
-        $this->geoip = geoip($ip);
+        $this->geoip = geoip($this->ip ?? $this->getIp());
     }
 
     public function getIp(): ?string
     {
+        if ($this->ip) {
+            return $this->ip;
+        }
+
+        //dd($_SERVER);
+
         foreach ([
             'HTTP_CLIENT_IP',
             'HTTP_X_FORWARDED_FOR',
