@@ -59,8 +59,10 @@ class Device extends Model
         return DeviceFactory::new();
     }
 
+    // @codeCoverageIgnoreStart
     public function user(): BelongsTo
     {
         return $this->belongsTo(LaravelAppCommon::user());
     }
+    // @codeCoverageIgnoreEnd
 }
