@@ -16,8 +16,11 @@ class Localization
             'ar',
         ];
 
+        //dd($request->user?->appLang);
+
         $userAppLang = $request->user?->appLang;
         $headerLang = $request->header('x-localization');
+        //dd($headerLang);
 
         // Check user app lang and header request to determine locale or use default locale
         $local = $userAppLang ?? $headerLang ?? $defaultLocale;
