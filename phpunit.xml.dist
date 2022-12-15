@@ -38,5 +38,6 @@
     </logging>
     <php>
         <server name="MAIL_MAILER" value="array"/>
+        <server name="CACHE_DRIVER" value="array"/>
     </php>
 </phpunit>

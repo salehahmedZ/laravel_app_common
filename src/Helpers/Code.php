@@ -10,7 +10,7 @@ class Code
     public static function generateEmailVerificationCode($email): string
     {
         $code = self::_generateEmailVerificationCode();
-        Cache::put(self::getEmailCodeKey($email), $code, now()->addMinutes(30));
+        Cache::put(self::getEmailVerificationCodeKey($email), $code, now()->addMinutes(30));
 
         return (string) $code;
     }
@@ -20,14 +20,19 @@ class Code
         return random_int(1000, 9999);
     }
 
-    private static function getEmailCodeKey($email): string
+    private static function getEmailVerificationCodeKey($email): string
     {
         return 'user.'.md5($email).'.emailCode';
     }
 
+    private static function getEmailVerificationSentAtKey($email): string
+    {
+        return 'user.'.md5($email).'.EmailVerificationEmailSendAt';
+    }
+
     public static function getEmailVerificationCode($email): string|null
     {
-        return (string) Cache::get(self::getEmailCodeKey($email));
+        return (string) Cache::get(self::getEmailVerificationCodeKey($email));
     }
 
     ////////////////////////////////////////////////////////////
@@ -50,6 +55,11 @@ class Code
         return 'user.'.md5($email).'.passwordResetCodeKey';
     }
 
+    private static function getPasswordRecoverySentAtKey($email): string
+    {
+        return 'user.'.md5($email).'.PasswordRecoveryEmailSendAt';
+    }
+
     public static function getPasswordRecoveryCode($email): string|null
     {
         return (string) Cache::get(self::getPasswordRecoveryCodeKey($email));
@@ -59,14 +69,14 @@ class Code
 
     public static function setEmailVerificationEmailSendAt($email): Carbon
     {
-        Cache::put('user.'.md5($email).'.EmailVerificationEmailSendAt', now()->timestamp, now()->addMinutes(5));
+        Cache::put(self::getEmailVerificationSentAtKey($email), now()->timestamp, now()->addMinutes(5));
 
         return Carbon::now();
     }
 
     public static function getEmailVerificationEmailSendAt($email): Carbon|null
     {
-        $val = Cache::get('user.'.md5($email).'.EmailVerificationEmailSendAt');
+        $val = Cache::get(self::getEmailVerificationSentAtKey($email));
         if (empty($val)) {
             return null;
         } else {
@@ -78,14 +88,14 @@ class Code
 
     public static function setPasswordRecoveryEmailSendAt($email): Carbon
     {
-        Cache::put('user.'.md5($email).'.PasswordRecoveryEmailSendAt', now()->timestamp, now()->addMinutes(5));
+        Cache::put(self::getPasswordRecoverySentAtKey($email), now()->timestamp, now()->addMinutes(5));
 
         return Carbon::now();
     }
 
     public static function getPasswordRecoveryEmailSendAt($email): Carbon|null
     {
-        $val = Cache::get('user.'.md5($email).'.PasswordRecoveryEmailSendAt');
+        $val = Cache::get(self::getPasswordRecoverySentAtKey($email));
         if (empty($val)) {
             return null;
         } else {
